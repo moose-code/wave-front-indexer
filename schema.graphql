@@ -1,232 +1,188 @@
-type Content_Approval {
+type Directory {
   id: ID!
-  owner: String!
-  approved: String!
-  tokenId: BigInt!
+  index: BigInt!
+  txCount: BigInt!
+  swapVolume: String!
+  liquidity: String!
+  curateVolume: String!
+  contents: BigInt!
 }
 
-type Content_ApprovalForAll {
+type User {
   id: ID!
-  owner: String!
-  operator: String!
-  approved: Boolean!
+  txCount: BigInt!
+  referrer: String!
 }
 
-type Content_BatchMetadataUpdate {
-  id: ID!
-  _fromTokenId: BigInt!
-  _toTokenId: BigInt!
-}
-
-type Content_Content__Approved {
-  id: ID!
-  moderator: String!
-  tokenId: BigInt!
-}
-
-type Content_Content__Created {
-  id: ID!
-  who: String!
-  to: String!
-  tokenId: BigInt!
-  uri: String!
-}
-
-type Content_Content__Curated {
-  id: ID!
-  who: String!
-  to: String!
-  tokenId: BigInt!
-  price: BigInt!
-}
-
-type Content_Content__IsModeratedSet {
-  id: ID!
-  isModerated: Boolean!
-}
-
-type Content_Content__ModeratorsSet {
-  id: ID!
-  account: String!
-  isModerator: Boolean!
-}
-
-type Content_Content__RewardAdded {
-  id: ID!
-  rewardToken: String!
-}
-
-type Content_Content__UriSet {
-  id: ID!
-  uri: String!
-}
-
-type Content_MetadataUpdate {
-  id: ID!
-  _tokenId: BigInt!
-}
-
-type Content_OwnershipTransferred {
-  id: ID!
-  previousOwner: String!
-  newOwner: String!
-}
-
-type Content_Transfer {
-  id: ID!
-  from: String!
-  to: String!
-  tokenId: BigInt!
-}
-
-type Core_Core__TokenCreated {
+type Token {
   id: ID!
   name: String!
   symbol: String!
   uri: String!
-  index: BigInt!
-  token: String!
-  content: String!
-  rewarder: String!
   owner: String!
+
+  txCount: BigInt!
+  swapVolume: String!
+  liquidity: String!
+  totalSupply: String!
+  marketCap: String!
+  quoteVirtReserve: String!
+  quoteRealReserve: String!
+  tokenReserve: String!
+  marketPrice: String!
+  floorPrice: String!
+  holders: BigInt!
+
+  contents: BigInt!
+  contentBalance: String!
+  curateVolume: String!
+
+  creatorRewardsQuote: String!
+  curatorRewardsQuote: String!
+  holderRewardsQuote: String!
+  holderRewardsToken: String!
+
+  treasuryRevenueQuote: String!
+  treasuryRevenueToken: String!
+  contentRevenueQuote: String!
+  contentRevenueToken: String!
+
+  createdAtTimestamp: BigInt!
+  createdAtBlockNumber: BigInt!
+
   isModerated: Boolean!
 }
 
-type Rewarder_Rewarder__Deposited {
+type TokenPosition {
   id: ID!
+  token: String!
   user: String!
-  amount: BigInt!
+  balance: String!
+  debt: String!
+
+  contentCreated: BigInt!
+  createdCurations: BigInt!
+  createdValue: String!
+
+  contentOwned: BigInt!
+  contentBalance: String!
+  curationSpend: String!
+
+  creatorRevenueQuote: String!
+  ownerRevenueQuote: String!
+
+  affiliateRevenueQuote: String!
+  affiliateRevenueToken: String!
+
+  curatorRevenueQuote: String!
+  curatorRevenueToken: String!
 }
 
-type Rewarder_Rewarder__RewardAdded {
+type Swap {
   id: ID!
-  rewardToken: String!
-}
-
-type Rewarder_Rewarder__RewardNotified {
-  id: ID!
-  rewardToken: String!
-  reward: BigInt!
-}
-
-type Rewarder_Rewarder__RewardPaid {
-  id: ID!
+  token: String!
   user: String!
-  rewardsToken: String!
-  reward: BigInt!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  quoteIn: String!
+  quoteOut: String!
+  tokenIn: String!
+  tokenOut: String!
+  marketPrice: String!
+  floorPrice: String!
 }
 
-type Rewarder_Rewarder__Withdrawn {
+type TokenDayData {
   id: ID!
-  user: String!
-  amount: BigInt!
+  token: String!
+  timestamp: BigInt!
+  marketPrice: String!
+  floorPrice: String!
+  volume: String!
 }
 
-type Token_Approval {
+type TokenHourData {
   id: ID!
+  token: String!
+  timestamp: BigInt!
+  marketPrice: String!
+  floorPrice: String!
+  volume: String!
+}
+
+type TokenMinuteData {
+  id: ID!
+  token: String!
+  timestamp: BigInt!
+  marketPrice: String!
+  floorPrice: String!
+  volume: String!
+}
+
+type ContentPosition {
+  id: ID!
+  tokenId: BigInt!
+  token: String!
+  creator: String!
   owner: String!
-  spender: String!
-  value: BigInt!
+  uri: String!
+  price: String!
+  nextPrice: String!
+  isApproved: Boolean!
+  curationCount: BigInt!
 }
 
-type Token_DelegateChanged {
+type Curate {
   id: ID!
-  delegator: String!
-  fromDelegate: String!
-  toDelegate: String!
+  token: String!
+  creator: String!
+  prevOwner: String!
+  user: String!
+  tokenId: BigInt!
+  uri: String!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  price: String!
+  surplus: String!
 }
 
-type Token_DelegateVotesChanged {
+type ContentDayData {
   id: ID!
-  delegate: String!
-  previousBalance: BigInt!
-  newBalance: BigInt!
+  token: String!
+  timestamp: BigInt!
+  volume: String!
+  surplus: String!
 }
 
-type Token_EIP712DomainChanged {
+type ContentHourData {
   id: ID!
+  token: String!
+  timestamp: BigInt!
+  volume: String!
+  surplus: String!
 }
 
-type Token_Token__Borrow {
+type ContentMinuteData {
   id: ID!
-  who: String!
-  to: String!
-  quoteRaw: BigInt!
+  token: String!
+  timestamp: BigInt!
+  volume: String!
+  surplus: String!
 }
 
-type Token_Token__Burn {
+type Moderator {
   id: ID!
-  who: String!
-  tokenAmt: BigInt!
+  user: String!
+  token: String!
+  isModerator: Boolean!
 }
 
-type Token_Token__BurnReserves {
+type Content {
   id: ID!
-  tokenAmt: BigInt!
-  reserveBurn: BigInt!
+  token: String!
 }
 
-type Token_Token__ContentFee {
+type Rewarder {
   id: ID!
-  to: String!
-  quoteRaw: BigInt!
-  tokenAmt: BigInt!
+  token: String!
 }
-
-type Token_Token__Heal {
-  id: ID!
-  who: String!
-  quoteRaw: BigInt!
-}
-
-type Token_Token__HealReserves {
-  id: ID!
-  quoteWad: BigInt!
-  virtAddWad: BigInt!
-}
-
-type Token_Token__ProviderFee {
-  id: ID!
-  to: String!
-  quoteRaw: BigInt!
-  tokenAmt: BigInt!
-}
-
-type Token_Token__Repay {
-  id: ID!
-  who: String!
-  to: String!
-  quoteRaw: BigInt!
-}
-
-type Token_Token__Swap {
-  id: ID!
-  from: String!
-  quoteInRaw: BigInt!
-  tokenIn: BigInt!
-  quoteOutRaw: BigInt!
-  tokenOut: BigInt!
-  to: String!
-}
-
-type Token_Token__SyncReserves {
-  id: ID!
-  reserveRealQuoteWad: BigInt!
-  reserveVirtQuoteWad: BigInt!
-  reserveTokenAmt: BigInt!
-}
-
-type Token_Token__TreasuryFee {
-  id: ID!
-  to: String!
-  quoteRaw: BigInt!
-  tokenAmt: BigInt!
-}
-
-type Token_Transfer {
-  id: ID!
-  from: String!
-  to: String!
-  value: BigInt!
-}
-
