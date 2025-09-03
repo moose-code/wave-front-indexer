@@ -24,6 +24,13 @@ import { USDC_ADDRESS } from "./utils";
 
 // (event-centric Content handlers removed to comply with domain schema)
 
+// Dynamically register newly created Token/Content/Rewarder contracts
+Core.Core__TokenCreated.contractRegister(({ event, context }) => {
+  context.addToken(event.params.token);
+  context.addContent(event.params.content);
+  context.addRewarder(event.params.rewarder);
+});
+
 Core.Core__TokenCreated.handler(
   async ({ event, context }: { event: any; context: HandlerContext }) => {
     // Directory (singleton keyed by CORE_ADDRESS)
