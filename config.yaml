@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+networks:
+- id: 84532
+  start_block: 0
+  contracts:
+  - name: Core
+    address:
+    - 0x4b89bCE8383B1090b30351D69A94dDD1BeE8134B
+    handler: src/EventHandlers.ts
+    events:
+    - event: Core__TokenCreated(string name, string symbol, string uri, uint256 index, address token, address content, address rewarder, address indexed owner, bool isModerated)
+  - name: Token
+    address:
+    - 0x4b89bCE8383B1090b30351D69A94dDD1BeE8134B
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed spender, uint256 value)
+    - event: DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate)
+    - event: DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance)
+    - event: EIP712DomainChanged()
+    - event: Token__Borrow(address indexed who, address indexed to, uint256 quoteRaw)
+    - event: Token__Burn(address indexed who, uint256 tokenAmt)
+    - event: Token__BurnReserves(uint256 tokenAmt, uint256 reserveBurn)
+    - event: Token__ContentFee(address indexed to, uint256 quoteRaw, uint256 tokenAmt)
+    - event: Token__Heal(address indexed who, uint256 quoteRaw)
+    - event: Token__HealReserves(uint256 quoteWad, uint256 virtAddWad)
+    - event: Token__ProviderFee(address indexed to, uint256 quoteRaw, uint256 tokenAmt)
+    - event: Token__Repay(address indexed who, address indexed to, uint256 quoteRaw)
+    - event: Token__Swap(address indexed from, uint256 quoteInRaw, uint256 tokenIn, uint256 quoteOutRaw, uint256 tokenOut, address indexed to)
+    - event: Token__SyncReserves(uint256 reserveRealQuoteWad, uint256 reserveVirtQuoteWad, uint256 reserveTokenAmt)
+    - event: Token__TreasuryFee(address indexed to, uint256 quoteRaw, uint256 tokenAmt)
+    - event: Transfer(address indexed from, address indexed to, uint256 value)
+  - name: Content
+    address:
+    - 0x4b89bCE8383B1090b30351D69A94dDD1BeE8134B
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
+    - event: BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId)
+    - event: Content__Approved(address indexed moderator, uint256 indexed tokenId)
+    - event: Content__Created(address indexed who, address indexed to, uint256 indexed tokenId, string uri)
+    - event: Content__Curated(address indexed who, address indexed to, uint256 indexed tokenId, uint256 price)
+    - event: Content__IsModeratedSet(bool isModerated)
+    - event: Content__ModeratorsSet(address indexed account, bool isModerator)
+    - event: Content__RewardAdded(address indexed rewardToken)
+    - event: Content__UriSet(string uri)
+    - event: MetadataUpdate(uint256 _tokenId)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+  - name: Rewarder
+    address:
+    - 0x4b89bCE8383B1090b30351D69A94dDD1BeE8134B
+    handler: src/EventHandlers.ts
+    events:
+    - event: Rewarder__Deposited(address indexed user, uint256 amount)
+    - event: Rewarder__RewardAdded(address indexed rewardToken)
+    - event: Rewarder__RewardNotified(address indexed rewardToken, uint256 reward)
+    - event: Rewarder__RewardPaid(address indexed user, address indexed rewardsToken, uint256 reward)
+    - event: Rewarder__Withdrawn(address indexed user, uint256 amount)
+unordered_multichain_mode: true
+preload_handlers: true

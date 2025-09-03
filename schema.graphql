@@ -1,0 +1,232 @@
+type Content_Approval {
+  id: ID!
+  owner: String!
+  approved: String!
+  tokenId: BigInt!
+}
+
+type Content_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  approved: Boolean!
+}
+
+type Content_BatchMetadataUpdate {
+  id: ID!
+  _fromTokenId: BigInt!
+  _toTokenId: BigInt!
+}
+
+type Content_Content__Approved {
+  id: ID!
+  moderator: String!
+  tokenId: BigInt!
+}
+
+type Content_Content__Created {
+  id: ID!
+  who: String!
+  to: String!
+  tokenId: BigInt!
+  uri: String!
+}
+
+type Content_Content__Curated {
+  id: ID!
+  who: String!
+  to: String!
+  tokenId: BigInt!
+  price: BigInt!
+}
+
+type Content_Content__IsModeratedSet {
+  id: ID!
+  isModerated: Boolean!
+}
+
+type Content_Content__ModeratorsSet {
+  id: ID!
+  account: String!
+  isModerator: Boolean!
+}
+
+type Content_Content__RewardAdded {
+  id: ID!
+  rewardToken: String!
+}
+
+type Content_Content__UriSet {
+  id: ID!
+  uri: String!
+}
+
+type Content_MetadataUpdate {
+  id: ID!
+  _tokenId: BigInt!
+}
+
+type Content_OwnershipTransferred {
+  id: ID!
+  previousOwner: String!
+  newOwner: String!
+}
+
+type Content_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  tokenId: BigInt!
+}
+
+type Core_Core__TokenCreated {
+  id: ID!
+  name: String!
+  symbol: String!
+  uri: String!
+  index: BigInt!
+  token: String!
+  content: String!
+  rewarder: String!
+  owner: String!
+  isModerated: Boolean!
+}
+
+type Rewarder_Rewarder__Deposited {
+  id: ID!
+  user: String!
+  amount: BigInt!
+}
+
+type Rewarder_Rewarder__RewardAdded {
+  id: ID!
+  rewardToken: String!
+}
+
+type Rewarder_Rewarder__RewardNotified {
+  id: ID!
+  rewardToken: String!
+  reward: BigInt!
+}
+
+type Rewarder_Rewarder__RewardPaid {
+  id: ID!
+  user: String!
+  rewardsToken: String!
+  reward: BigInt!
+}
+
+type Rewarder_Rewarder__Withdrawn {
+  id: ID!
+  user: String!
+  amount: BigInt!
+}
+
+type Token_Approval {
+  id: ID!
+  owner: String!
+  spender: String!
+  value: BigInt!
+}
+
+type Token_DelegateChanged {
+  id: ID!
+  delegator: String!
+  fromDelegate: String!
+  toDelegate: String!
+}
+
+type Token_DelegateVotesChanged {
+  id: ID!
+  delegate: String!
+  previousBalance: BigInt!
+  newBalance: BigInt!
+}
+
+type Token_EIP712DomainChanged {
+  id: ID!
+}
+
+type Token_Token__Borrow {
+  id: ID!
+  who: String!
+  to: String!
+  quoteRaw: BigInt!
+}
+
+type Token_Token__Burn {
+  id: ID!
+  who: String!
+  tokenAmt: BigInt!
+}
+
+type Token_Token__BurnReserves {
+  id: ID!
+  tokenAmt: BigInt!
+  reserveBurn: BigInt!
+}
+
+type Token_Token__ContentFee {
+  id: ID!
+  to: String!
+  quoteRaw: BigInt!
+  tokenAmt: BigInt!
+}
+
+type Token_Token__Heal {
+  id: ID!
+  who: String!
+  quoteRaw: BigInt!
+}
+
+type Token_Token__HealReserves {
+  id: ID!
+  quoteWad: BigInt!
+  virtAddWad: BigInt!
+}
+
+type Token_Token__ProviderFee {
+  id: ID!
+  to: String!
+  quoteRaw: BigInt!
+  tokenAmt: BigInt!
+}
+
+type Token_Token__Repay {
+  id: ID!
+  who: String!
+  to: String!
+  quoteRaw: BigInt!
+}
+
+type Token_Token__Swap {
+  id: ID!
+  from: String!
+  quoteInRaw: BigInt!
+  tokenIn: BigInt!
+  quoteOutRaw: BigInt!
+  tokenOut: BigInt!
+  to: String!
+}
+
+type Token_Token__SyncReserves {
+  id: ID!
+  reserveRealQuoteWad: BigInt!
+  reserveVirtQuoteWad: BigInt!
+  reserveTokenAmt: BigInt!
+}
+
+type Token_Token__TreasuryFee {
+  id: ID!
+  to: String!
+  quoteRaw: BigInt!
+  tokenAmt: BigInt!
+}
+
+type Token_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  value: BigInt!
+}
+
